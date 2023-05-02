@@ -121,8 +121,7 @@ protected:
 
 public:
     Transaction(); // Default constructor
-    Transaction(const std::string& transactionID, const Date& transactionDate); // Parameterized constructor
-    // Accessors, mutators, and other methods
+    Transaction(const std::string& transactionID, const Date& transactionDate);
     // Accessors
     std::string getTransactionID() const { return transactionID; }
     Date getTransactionDate() const { return transactionDate; }
@@ -162,14 +161,11 @@ public:
     void setOrderedBook(const Book& orderedBook) { this->orderedBook = orderedBook; }
     void setQuantity(int quantity) { this->quantity = quantity; }
 
-    // Other methods
     void process() override {
         // Process the order
         if (orderedBook.getQuantity() >= quantity) {
             // Update the quantity of the book in the catalog
             orderedBook.setQuantity(orderedBook.getQuantity() - quantity);
-
-            // Perform any other required operations such as logging the order, notifying the customer, etc.
             std::cout << "Order processed successfully." << std::endl;
         }
         else {
@@ -207,8 +203,6 @@ public:
         if (soldBook.getQuantity() >= quantity) {
             // Update the quantity of the book in the catalog
             soldBook.setQuantity(soldBook.getQuantity() - quantity);
-
-            // Perform any other required operations such as logging the sale, generating a receipt, etc.
             std::cout << "Sale processed successfully." << std::endl;
         }
         else {
